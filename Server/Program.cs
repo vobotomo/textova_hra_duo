@@ -1,10 +1,9 @@
-namespace textova_hra_duo
+namespace Server
 {
     internal class Program
     {
         public static void Main(string[] args)
         {
-
         }
     }
 }
