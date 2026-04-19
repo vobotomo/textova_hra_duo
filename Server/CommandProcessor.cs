@@ -6,9 +6,12 @@ namespace Server
     {
         private readonly WorldManager _world;
 
-        public CommandProcessor(WorldManager world)
+        private readonly NpcManager _npcManager;
+
+        public CommandProcessor(WorldManager world, NpcManager npcManager)
         {
             _world = world;
+            _npcManager = npcManager;
         }
 
         public string Process(string input, Player player)
@@ -16,7 +19,7 @@ namespace Server
             if (string.IsNullOrWhiteSpace(input))
                 return "Nezadal jsi zadny prikaz.";
 
-            var parts = input.Trim().Split(' ', 2);
+            var parts = input.Trim().ToLower().Split(' ', 2);
             var command = parts[0].ToLower();
             var argument = parts.Length > 1 ? parts[1] : "";
 
@@ -28,8 +31,27 @@ namespace Server
                 "poloz"      => Poloz(player, argument),
                 "inventar"   => Inventar(player),
                 "pomoc"      => Pomoc(),
+                "mluv" => Mluv(player, argument),
                 _            => "Neznam tento prikaz. Pis 'pomoc' pro seznam prikazu."
             };
+        }
+        
+        private string Mluv(Player player, string jmeno)
+        {
+            if (string.IsNullOrWhiteSpace(jmeno))
+                return "S kym chces mluvit? Napr: mluv technik orion";
+
+            var room = _world.GetRoom(player.CurrentRoomId);
+            if (room == null) return "Mistnost nenalezena.";
+
+            string found = room.Npcs.Find(n => n.ToLower() == jmeno.ToLower());
+            if (found == null)
+                return "'" + jmeno + "' tady neni.";
+
+            var npc = _npcManager.GetNpc(jmeno);
+            if (npc == null) return "'" + jmeno + "' nema co rict.";
+
+            return npc.Name + ": \"" + npc.Dialog + "\"";
         }
 
         private string Prozkoumej(Player player)
@@ -114,7 +136,8 @@ namespace Server
                 "  vezmi <predmet>   - vezmi predmet z mistnosti\n" +
                 "  poloz <predmet>   - poloz predmet z inventare\n" +
                 "  inventar          - zobrazi inventar\n" +
-                "  pomoc             - zobrazi tento seznam\n";
+                "  pomoc             - zobrazi tento seznam\n" +
+                "  mluv <jmeno>     - promluv s NPC, napr: mluv Technik Orion\n";
         }
     }
 }

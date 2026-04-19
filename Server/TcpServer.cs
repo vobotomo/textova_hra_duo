@@ -14,12 +14,15 @@ namespace Server
         private TcpListener _listener;
         private bool _running;
 
-        public TcpServer(int port, WorldManager world)
+        private readonly NpcManager _npcManager;
+
+        public TcpServer(int port, WorldManager world, NpcManager npcManager)
         {
             _port = port;
             _world = world;
-            _processor = new CommandProcessor(world);
-            _listener = new TcpListener(IPAddress.Any, port);
+            _npcManager = npcManager;
+            _processor = new CommandProcessor(world, npcManager);
+            _listener = new System.Net.Sockets.TcpListener(System.Net.IPAddress.Any, port);
         }
 
         public async Task StartAsync()

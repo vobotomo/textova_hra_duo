@@ -6,6 +6,20 @@ namespace Server
         {
             var world = new WorldManager();
 
+            var npcManager = new NpcManager();
+
+            npcManager.AddNpc(new Npc
+            {
+                Name = "Technik Orion",
+                Dialog = "Hele, reaktor je nestabilni. Potrebuju klic od skladu abych ho opravil. Videl jsem ho nekde tady..."
+            });
+
+            npcManager.AddNpc(new Npc
+            {
+                Name = "Kapitan",
+                Dialog = "Stanice je ztracena. Jedina sance je dostat se do hangaru a aktivovat uknikovy modul."
+            });
+            
             world.AddRoom(new Room
             {
                 Id = 1,
@@ -33,7 +47,7 @@ namespace Server
                 Npcs = new System.Collections.Generic.List<string> { "Technik Orion" }
             });
 
-            var server = new TcpServer(4000, world);
+            var server = new TcpServer(4000, world, npcManager);
             server.StartAsync().GetAwaiter().GetResult();
         }
     }
