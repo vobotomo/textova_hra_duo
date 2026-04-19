@@ -16,7 +16,7 @@ class Program
         ConsoleUI.ShowBanner();
 
         string host = "127.0.0.1";
-        int port = 5000;
+        int port = 4000;
 
         if (args.Length >= 1) host = args[0];
         if (args.Length >= 2 && int.TryParse(args[1], out int p)) port = p;

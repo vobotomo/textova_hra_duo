@@ -10,12 +10,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("Server")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("AppClient")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dd85722e385e6b2114f87990c1a4208fc726aa98")]
-[assembly: System.Reflection.AssemblyProductAttribute("Server")]
-[assembly: System.Reflection.AssemblyTitleAttribute("Server")]
+[assembly: System.Reflection.AssemblyProductAttribute("AppClient")]
+[assembly: System.Reflection.AssemblyTitleAttribute("AppClient")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Vygenerované třídou WriteCodeFragment nástroje MSBuild

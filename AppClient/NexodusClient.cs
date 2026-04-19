@@ -51,7 +51,7 @@ public class NexusClient : IDisposable
         {
             while (!ct.IsCancellationRequested && _reader != null)
             {
-                var line = await _reader.ReadLineAsync(ct);
+                var line = await _reader.ReadLineAsync();
                 if (line == null) break;
 
                 ConsoleUI.DisplayServerMessage(line);

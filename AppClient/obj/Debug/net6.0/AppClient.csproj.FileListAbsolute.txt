@@ -1,0 +1,15 @@
+C:\Users\diddy\RiderProjects\textova_hra_duo\AppClient\bin\Debug\net6.0\AppClient.exe
+C:\Users\diddy\RiderProjects\textova_hra_duo\AppClient\bin\Debug\net6.0\AppClient.deps.json
+C:\Users\diddy\RiderProjects\textova_hra_duo\AppClient\bin\Debug\net6.0\AppClient.runtimeconfig.json
+C:\Users\diddy\RiderProjects\textova_hra_duo\AppClient\bin\Debug\net6.0\AppClient.dll
+C:\Users\diddy\RiderProjects\textova_hra_duo\AppClient\bin\Debug\net6.0\AppClient.pdb
+C:\Users\diddy\RiderProjects\textova_hra_duo\AppClient\obj\Debug\net6.0\AppClient.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\diddy\RiderProjects\textova_hra_duo\AppClient\obj\Debug\net6.0\AppClient.AssemblyInfoInputs.cache
+C:\Users\diddy\RiderProjects\textova_hra_duo\AppClient\obj\Debug\net6.0\AppClient.AssemblyInfo.cs
+C:\Users\diddy\RiderProjects\textova_hra_duo\AppClient\obj\Debug\net6.0\AppClient.csproj.CoreCompileInputs.cache
+C:\Users\diddy\RiderProjects\textova_hra_duo\AppClient\obj\Debug\net6.0\AppClient.sourcelink.json
+C:\Users\diddy\RiderProjects\textova_hra_duo\AppClient\obj\Debug\net6.0\AppClient.dll
+C:\Users\diddy\RiderProjects\textova_hra_duo\AppClient\obj\Debug\net6.0\refint\AppClient.dll
+C:\Users\diddy\RiderProjects\textova_hra_duo\AppClient\obj\Debug\net6.0\AppClient.pdb
+C:\Users\diddy\RiderProjects\textova_hra_duo\AppClient\obj\Debug\net6.0\AppClient.genruntimeconfig.cache
+C:\Users\diddy\RiderProjects\textova_hra_duo\AppClient\obj\Debug\net6.0\ref\AppClient.dll
