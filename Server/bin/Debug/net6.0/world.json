@@ -1,0 +1,38 @@
+﻿{
+  "Rooms": [
+    {
+      "Id": 1,
+      "Name": "Zachranna kapsle",
+      "Description": "Rozbite svetlo, kovovy zapach. Tady jsi se probudil.",
+      "Exits": { "sever": 2 },
+      "Items": [ "zapisnik" ],
+      "Npcs": []
+    },
+    {
+      "Id": 2,
+      "Name": "Chodba A",
+      "Description": "Polotemna chodba s kabelazi.",
+      "Exits": { "jih": 1, "sever": 3 },
+      "Items": [],
+      "Npcs": []
+    },
+    {
+      "Id": 3,
+      "Name": "Reaktorova hala",
+      "Description": "Obrovska mistnost humici chladicimi ventilatory.",
+      "Exits": { "jih": 2 },
+      "Items": [ "klic od skladu" ],
+      "Npcs": [ "Technik Orion" ]
+    }
+  ],
+  "Npcs": [
+    {
+      "Name": "Technik Orion",
+      "Dialog": "Hele, reaktor je nestabilni. Potrebuju klic od skladu abych ho opravil."
+    },
+    {
+      "Name": "Kapitan",
+      "Dialog": "Stanice je ztracena. Jedina sance je dostat se do hangaru."
+    }
+  ]
+}

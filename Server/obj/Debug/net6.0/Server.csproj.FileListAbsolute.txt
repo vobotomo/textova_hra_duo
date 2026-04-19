@@ -13,3 +13,4 @@ C:\Users\diddy\RiderProjects\textova_hra_duo\Server\obj\Debug\net6.0\refint\Serv
 C:\Users\diddy\RiderProjects\textova_hra_duo\Server\obj\Debug\net6.0\Server.pdb
 C:\Users\diddy\RiderProjects\textova_hra_duo\Server\obj\Debug\net6.0\Server.genruntimeconfig.cache
 C:\Users\diddy\RiderProjects\textova_hra_duo\Server\obj\Debug\net6.0\ref\Server.dll
+C:\Users\diddy\RiderProjects\textova_hra_duo\Server\bin\Debug\net6.0\world.json

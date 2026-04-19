@@ -7,4 +7,9 @@
     <ItemGroup>
       <Folder Include="Properties\" />
     </ItemGroup>
+    <ItemGroup>
+        <Content Include="world.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
 </Project>
