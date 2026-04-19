@@ -1,67 +1,94 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 
-public class TcpServer
+namespace Server
 {
-    private readonly int _port;
-    private TcpListener _listener;
-    private bool _running;
-
-    public TcpServer(int port)
+    public class TcpServer
     {
-        _port = port;
-        _listener = new TcpListener(IPAddress.Any, port);
-    }
+        private readonly int _port;
+        private readonly WorldManager _world;
+        private readonly NpcManager _npcManager;
+        private readonly CommandProcessor _processor;
+        private TcpListener _listener;
+        private bool _running;
+        private static List<Player> _activePlayers = new List<Player>();
+        private static readonly object _playersLock = new object();
 
-    public async Task StartAsync()
-    {
-        _listener.Start();
-        _running = true;
-        Console.WriteLine($"Server bezi na portu {_port}...");
-
-        while (_running)
+        public TcpServer(int port, WorldManager world, NpcManager npcManager)
         {
-            TcpClient client = await _listener.AcceptTcpClientAsync();
-            Console.WriteLine("Novy hrac se pripojil.");
-            _ = Task.Run(() => HandleClientAsync(client));
+            _port = port;
+            _world = world;
+            _npcManager = npcManager;
+            _processor = new CommandProcessor(world, npcManager, _activePlayers);
+            _listener = new TcpListener(IPAddress.Any, port);
         }
-    }
 
-    private async Task HandleClientAsync(TcpClient client)
-    {
-        using (client)
+        public async Task StartAsync()
         {
-            var stream = client.GetStream();
-            var reader = new StreamReader(stream);
-            var writer = new StreamWriter(stream) { AutoFlush = true };
+            _listener.Start();
+            _running = true;
+            Logger.Log("Server spusten na portu " + _port);
 
-            try
+            while (_running)
             {
-                await writer.WriteLineAsync("Vitejte na Nexus Station! Zadejte sve jmeno:");
+                TcpClient client = await _listener.AcceptTcpClientAsync();
+                Logger.Log("Nove pripojeni: " + client.Client.RemoteEndPoint);
+                _ = Task.Run(() => HandleClientAsync(client));
+            }
+        }
 
-                string name = await reader.ReadLineAsync();
-                Console.WriteLine($"Hrac '{name}' se pripojil.");
-                await writer.WriteLineAsync($"Ahoj, {name}! Pis 'pomoc' pro seznam prikazu.");
+        private async Task HandleClientAsync(TcpClient client)
+        {
+            string endpoint = client.Client.RemoteEndPoint?.ToString() ?? "neznamy";
+            Player player = null;
 
-                while (true)
+            using (client)
+            {
+                var stream = client.GetStream();
+                var reader = new StreamReader(stream);
+                var writer = new StreamWriter(stream) { AutoFlush = true };
+
+                try
                 {
-                    string line = await reader.ReadLineAsync();
-                    if (line == null) break;
+                    await writer.WriteLineAsync("Vitejte na Nexus Station! Zadejte sve jmeno:");
 
-                    Console.WriteLine($"[{name}]: {line}");
-                    await writer.WriteLineAsync($"Prijato: {line}");
+                    string name = await reader.ReadLineAsync();
+                    player = new Player { Name = name ?? "Neznamy" };
+
+                    lock (_playersLock)
+                        _activePlayers.Add(player);
+
+                    Logger.Log("Hrac '" + player.Name + "' se prihlasil z " + endpoint);
+                    await writer.WriteLineAsync("Ahoj, " + player.Name + "! Pis 'pomoc' pro seznam prikazu.");
+
+                    while (true)
+                    {
+                        string line = await reader.ReadLineAsync();
+                        if (line == null) break;
+
+                        Logger.Log("[" + player.Name + "]: " + line);
+                        var response = _processor.Process(line, player);
+                        foreach (var radek in response.Split('\n'))
+                            await writer.WriteLineAsync(radek);
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Chyba klienta: {ex.Message}");
-            }
-            finally
-            {
-                Console.WriteLine($"Hrac se odpojil.");
+                catch (Exception ex)
+                {
+                    Logger.Log("CHYBA [" + endpoint + "]: " + ex.Message);
+                }
+                finally
+                {
+                    if (player != null)
+                    {
+                        lock (_playersLock)
+                            _activePlayers.Remove(player);
+                    }
+                    Logger.Log("Hrac se odpojil: " + endpoint);
+                }
             }
         }
     }
