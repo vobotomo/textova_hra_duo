@@ -8,12 +8,14 @@ namespace Server
 
         private readonly NpcManager _npcManager;
 
-        public CommandProcessor(WorldManager world, NpcManager npcManager)
+        private readonly List<Player> _activePlayers;
+
+        public CommandProcessor(WorldManager world, NpcManager npcManager, List<Player> activePlayers)
         {
             _world = world;
             _npcManager = npcManager;
+            _activePlayers = activePlayers;
         }
-
         public string Process(string input, Player player)
         {
             if (string.IsNullOrWhiteSpace(input))
@@ -57,7 +59,7 @@ namespace Server
         private string Prozkoumej(Player player)
         {
             var room = _world.GetRoom(player.CurrentRoomId);
-            return room == null ? "Mistnost nenalezena." : _world.DescribeRoom(room);
+            return room == null ? "Mistnost nenalezena." : _world.DescribeRoom(room, _activePlayers, player);
         }
 
         private string Jdi(Player player, string smer)
@@ -72,7 +74,7 @@ namespace Server
             {
                 player.CurrentRoomId = nextRoomId;
                 var nextRoom = _world.GetRoom(nextRoomId);
-                return nextRoom == null ? "Mistnost nenalezena." : _world.DescribeRoom(nextRoom);
+                return nextRoom == null ? "Mistnost nenalezena." : _world.DescribeRoom(nextRoom, _activePlayers, player);
             }
 
             return "Smer '" + smer + "' tady neexistuje.";
