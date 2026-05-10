@@ -139,7 +139,9 @@ namespace Server
                 "  poloz <predmet>   - poloz predmet z inventare\n" +
                 "  inventar          - zobrazi inventar\n" +
                 "  pomoc             - zobrazi tento seznam\n" +
-                "  mluv <jmeno>     - promluv s NPC, napr: mluv Technik Orion\n";
+                "  mluv <jmeno>     - promluv s NPC, napr: mluv Technik Orion\n" +
+                "  uloz             - uloz stav hry\n" +
+                "  odhlasit         - uloz a odhlas se\n";
         }
     }
 }
