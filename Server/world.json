@@ -2,37 +2,113 @@
   "Rooms": [
     {
       "Id": 1,
-      "Name": "Zachranna kapsle",
-      "Description": "Rozbite svetlo, kovovy zapach. Tady jsi se probudil.",
+      "Name": "Záchranná kapsle",
+      "Description": "Probouzíš se na kovové podlaze. Nad tebou bliká nouzové červené světlo. Vzduch páchne spáleninou a chladivem. Na stěně je vyryto: 'STANICE NEXODUS – PŘÍSNĚ TAJNÉ'. Vzpomínky se pomalu vracejí – jsi výzkumný technik, který byl uvězněn, když reaktor začal selhávat. Musíš zjistit, co se stalo, a dostat se ven.",
       "Exits": { "sever": 2 },
-      "Items": [ "zapisnik" ],
+      "Items": [ "zapisnik", "svitilna" ],
       "Npcs": []
     },
     {
       "Id": 2,
-      "Name": "Chodba A",
-      "Description": "Polotemna chodba s kabelazi.",
-      "Exits": { "jih": 1, "sever": 3 },
-      "Items": [],
-      "Npcs": []
+      "Name": "Chodba A – Ubytovací sekce",
+      "Description": "Dlouhá chodba lemovaná uzamčenými kajutami. Na podlaze jsou stopy krve vedoucí na sever. Stropy jsou popraskané, z nich visí kabely. Na zdi bliká nouzový panel s nápisem 'EVAKUACE ZAHÁJENA – 47 MINUT'.",
+      "Exits": { "jih": 1, "sever": 3, "vychod": 4 },
+      "Items": [ "lekarnicky" ],
+      "Npcs": [ "Technik Mira" ]
     },
     {
       "Id": 3,
-      "Name": "Reaktorova hala",
-      "Description": "Obrovska mistnost humici chladicimi ventilatory.",
-      "Exits": { "jih": 2 },
-      "Items": [ "klic od skladu" ],
+      "Name": "Velitelský můstek",
+      "Description": "Srdce stanice. Řídící konzole jsou napůl rozbité, na hlavní obrazovce se střídají chybová hlášení. Skrz panoramatické okno vidíš planetu dole – a záchranný člun přikotvený venku. Dveře do hangáru jsou zabezpečeny magnetickým zámkem.",
+      "Exits": { "jih": 2, "zapad": 5 },
+      "Items": [],
+      "Npcs": [ "Kapitán Voss" ]
+    },
+    {
+      "Id": 4,
+      "Name": "Laboratoř biologického výzkumu",
+      "Description": "Sterilní místnost s rozbitými skleněnými nádobami. Na stolech jsou rozlité tmavé látky. V rohu svítí jeden funkční terminál. Vzduch tu páchne chemikáliemi. Na tabuli je napsáno: 'PROJEKT ECHO – FÁZE 3 DOKONČENA'.",
+      "Exits": { "zapad": 2, "sever": 6 },
+      "Items": [ "laboratorni denik", "antidotum" ],
+      "Npcs": [ "Dr. Kaspar" ]
+    },
+    {
+      "Id": 5,
+      "Name": "Zbrojní sklad",
+      "Description": "Temná místnost s kovovými policemi. Většina zbraní je pryč nebo nefunkční. Na podlaze leží mrtvý strážce. V jeho ruce svírá přístupovou kartu. Dveře jsou ocelové a masivní.",
+      "Exits": { "vychod": 3 },
+      "Items": [ "pristupova karta", "kyslíkova maska" ],
+      "Npcs": []
+    },
+    {
+      "Id": 6,
+      "Name": "Technická chodba – Úroveň B",
+      "Description": "Úzká chodba plná potrubí a ventilů. Teplo tu je nesnesitelné. Potrubí syčí párou, musíš jít opatrně. Na jedné trubce je přilepena páska s textem: 'NEVYPÍNEJ VENTIL 7!'.",
+      "Exits": { "jih": 4, "sever": 7, "vychod": 8 },
+      "Items": [ "klic od skříňky" ],
       "Npcs": [ "Technik Orion" ]
+    },
+    {
+      "Id": 7,
+      "Name": "Reaktorová hala",
+      "Description": "Obrovský prostor dominovaný pulzujícím jádrem reaktoru. Chladicí ventiláory hučí na plný výkon, ale je zřejmé, že nestačí. Na displeji bliká: 'PŘEHŘÁTÍ – KRITICKÁ ÚROVEŇ – 32 MINUT'. Uprostřed haly je servisní konzole.",
+      "Exits": { "jih": 6, "zapad": 9 },
+      "Items": [ "klic od skladu", "opravna sada" ],
+      "Npcs": [ "AI NEXUS" ]
+    },
+    {
+      "Id": 8,
+      "Name": "Jídelna",
+      "Description": "Kdysi zde panoval hluk a smích posádky. Teď jsou stoly převržené a jídlo na podlaze shnilé. Na jednom stole stojí nedotčený hrnek s kávou – jako by ho někdo právě odložil. U okna sedí a tiše se dívá na hvězdy stará žena.",
+      "Exits": { "zapad": 6, "sever": 10 },
+      "Items": [ "fotografie" ],
+      "Npcs": [ "Vědecká ředitelka Rhea" ]
+    },
+    {
+      "Id": 9,
+      "Name": "Sklad náhradních dílů",
+      "Description": "Obrovský sklad s vysokými regály. Většina dílů je rozsypána po podlaze. Uprostřed je uzamčená kovová skříňka s nápisem 'NOUZOVÝ PROTOKOL'. Světla sem tam zhasínají.",
+      "Exits": { "vychod": 7 },
+      "Items": [ "fúzní baterie" ],
+      "Npcs": []
+    },
+    {
+      "Id": 10,
+      "Name": "Hangár – Záchranný člun",
+      "Description": "Rozlehlý hangár. Uprostřed stojí záchranný člun – tvůj lístek domů. Rampa je otevřená. Kontrolní panel lodi bliká: 'POHONNÉ SYSTÉMY: 12% – NUTNO DOPLNIT ENERGII'. Bez fúzní baterie nikam neodletíš. Blíží se chvíle rozhodnutí.",
+      "Exits": { "jih": 8 },
+      "Items": [],
+      "Npcs": [ "Pilot Zara" ]
     }
   ],
   "Npcs": [
     {
-      "Name": "Technik Orion",
-      "Dialog": "Hele, reaktor je nestabilni. Potrebuju klic od skladu abych ho opravil."
+      "Name": "Technik Mira",
+      "Dialog": "Konečně někdo živý! Myslela jsem, že jsem tu sama. Reaktor se přehřívá – Orion říkal, že ho lze stabilizovat, ale potřebuje součástky ze skladu. Klíč od skladu je někde v reaktorové hale. Dej si pozor na laboratoř – nevím, co tam Dr. Kaspar prováděl, ale lidé co tam šli... se nevrátili normální."
     },
     {
-      "Name": "Kapitan",
-      "Dialog": "Stanice je ztracena. Jedina sance je dostat se do hangaru."
+      "Name": "Kapitán Voss",
+      "Dialog": "Nemám čas na řeči. Stanice je ztracená – projekt Echo selhal a reaktor půjde do kritické fáze za méně než hodinu. Záchranný člun potřebuje fúzní baterii – měla by být ve skladu. Přístup do hangáru získáš přístupovou kartou ze zbrojního skladu. Ale nejdříve – pokud chceš vědět pravdu o projektu Echo, promluvs Rheou nebo Kasparem."
+    },
+    {
+      "Name": "Dr. Kaspar",
+      "Dialog": "Ach, další přeživší. Výborně. Poslouchej – projekt Echo byl pokus o syntézu nové formy energie přímou neuronovou vazbou. Selhalo to. Katastrofálně. Máš-li antidotum z laboratoře, dones ho Orionovi – pracovat v té teplotě bez něj... není dobré. Laboratorní deník ti řekne víc, než bych ti měl říkat já."
+    },
+    {
+      "Name": "Technik Orion",
+      "Dialog": "Fáááj, konečně! Potřebuji klíč od skladu, abych mohl vzít opravnou sadu a stabilizovat reaktor. Bez toho nás všechny smaže za – kolik minut zbývá? – nevím, ale málo. A dones mi prosím antidotum z laboratoře. Ta teplota mi začíná dělat s hlavou věci."
+    },
+    {
+      "Name": "AI NEXUS",
+      "Dialog": "Zdravím, techniku. Jsem NEXUS, řídicí AI stanice Nexodus. Detekuji kritické selhání reaktoru. Protokol záchrany vyžaduje: 1) Stabilizovat reaktor pomocí opravné sady. 2) Doplnit záchranný člun fúzní baterií. 3) Evakuovat zbývající posádku. Pravděpodobnost přežití při správném postupu: 73 %. Přeji mnoho štěstí, techniku. NEXUS bude monitorovat do posledního okamžiku."
+    },
+    {
+      "Name": "Vědecká ředitelka Rhea",
+      "Dialog": "Sedím tu a dívám se na hvězdy. Víš, já tento projekt navrhla. Myslela jsem, že změním svět. Místo toho jsem ho zničila – aspoň tento malý kousek světa. Fotografie na stole je ze slavnostního zahájení projektu. Vezmis ji – ať někdo ví, co se tu stalo. A jdi – zachraň ostatní. Já... já tu zůstanu."
+    },
+    {
+      "Name": "Pilot Zara",
+      "Dialog": "Loď je připravena, ale pohon je skoro vybitý. Bez fúzní baterie nemůžeme vzlétnout. Mám místo pro čtyři pasažéry. Sežeň baterii, přijď zpátky a odletíme. Počítám na tebe. A rychle – nemám dobré tušení o tom, co se děje s reaktorem."
     }
   ]
 }
